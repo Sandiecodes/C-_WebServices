@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  soap_host:
+    image: hpgy/mono-xsp4
+    container_name: service_host
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+  mono_client:
+    image: mono:latest
+    container_name: mono_client
+    command: ["bin/bash"]
+    volumes:
+      - .:/code
+    stdin_open: true
+    tty: true
